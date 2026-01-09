@@ -1,14 +1,13 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "/", // SAME DOMAIN (Render or local proxy)
 });
 
 // get today's tasks
 export const getTodayTasks = () => API.get("/today");
 
 // save daily log
-
 export const saveDailyLog = (data) => API.post("/logs", data);
 
 // get monthly dashboard data
