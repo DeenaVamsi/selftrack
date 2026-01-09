@@ -1,0 +1,741 @@
+:root {
+  --yellow: #ffc107;
+  --black: #111111;
+  --white: #ffffff;
+}
+
+/* GLOBAL */
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background-color: var(--yellow);
+  color: var(--black);
+}
+
+/* MAIN WRAPPER */
+.app-wrapper {
+  padding: 40px;
+}
+
+/* HERO HEADER */
+.hero {
+  background-color: var(--yellow);
+  border-radius: 24px;
+  padding: 40px;
+  margin-bottom: 40px;
+}
+
+/* ===== HERO FLEX LAYOUT ===== */
+.hero-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero-left h1 {
+  font-size: 36px;
+  font-weight: 900;
+}
+
+.hero-left p {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-top: 6px;
+}
+
+/* RIGHT SIDE */
+.hero-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== BIGGER PROGRESS RING ===== */
+.large-ring {
+  width: 170px;
+  height: 170px;
+}
+
+.large-inner {
+  width: 130px;
+  height: 130px;
+}
+
+.large-inner span {
+  font-size: 36px;
+}
+
+.large-inner small {
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+/* ===== TIME TEXT BELOW RING ===== */
+.time-text {
+  margin-top: 10px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #111;
+}
+
+/* TASK GRID */
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 30px;
+}
+
+/* TASK CARD */
+.task-card {
+  background-color: var(--black);
+  color: var(--white);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* TASK TITLE */
+.task-card h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* CATEGORY BADGE */
+.category {
+  background-color: var(--yellow);
+  color: var(--black);
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+/* META TEXT */
+.meta {
+  margin-top: 12px;
+  opacity: 0.85;
+}
+
+/* INPUT ROW */
+.input-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+/* CHECKBOX */
+input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  accent-color: var(--yellow);
+}
+
+/* HOURS INPUT */
+input[type="number"] {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+/* SAVE BUTTON */
+.save-btn {
+  background-color: #111;
+  color: #ffc107;
+  padding: 16px 40px;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.save-btn:hover {
+  transform: scale(1.03);
+}
+
+/* POPUP OVERLAY */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* POPUP BOX */
+.popup-box {
+  background-color: #ffc107;
+  color: #111;
+  padding: 40px 50px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  animation: popIn 0.3s ease-out;
+}
+
+.popup-box h2 {
+  margin-bottom: 10px;
+  font-weight: 900;
+}
+
+.popup-box p {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* ANIMATION */
+@keyframes popIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===== PROGRESS RING ===== */
+.progress-ring {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: conic-gradient(#ffc107 var(--progress), #2b2b2b 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto 10px;
+  box-shadow: 0 0 30px rgba(255, 193, 7, 0.4);
+  transition: background 0.6s ease;
+}
+
+.progress-inner {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffc107;
+  font-weight: 800;
+}
+
+.progress-inner span {
+  font-size: 28px;
+  line-height: 1;
+}
+
+.progress-inner small {
+  font-size: 12px;
+  color: #ddd;
+  margin-top: 4px;
+}
+
+/* ===== DASHBOARD ===== */
+
+/* ===== DASHBOARD HERO HEADER ===== */
+
+.dashboard-hero {
+  background: linear-gradient(135deg, #ffc107, #ffdb4d);
+  border-radius: 22px;
+  padding: 28px 36px;
+  margin-bottom: 40px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow: 0 25px 60px rgba(255, 193, 7, 0.35);
+}
+
+.dashboard-hero-left h1 {
+  font-size: 34px;
+  font-weight: 900;
+  color: #111;
+  margin-bottom: 6px;
+}
+
+.dashboard-hero-left p {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  opacity: 0.85;
+}
+
+.dashboard-hero-right {
+  font-size: 42px;
+  background: #111;
+  color: #ffc107;
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.dashboard-title {
+  font-size: 34px;
+  font-weight: 900;
+  margin-bottom: 30px;
+}
+
+/* GRID */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* CARD */
+.dashboard-card {
+  background: #111;
+  border-radius: 18px;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* LEFT SIDE */
+.dash-left h3 {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.dash-left p {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 14px;
+}
+
+/* PROGRESS BAR */
+.progress-bar {
+  width: 220px;
+  height: 10px;
+  background: #2b2b2b;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ffc107, #ffdb4d);
+  transition: width 0.6s ease;
+}
+
+/* RIGHT SIDE */
+.dash-right {
+  display: flex;
+  align-items: center;
+}
+
+/* MINI PROGRESS RING */
+.mini-ring {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: conic-gradient(#ffc107 calc(var(--progress) * 1), #2b2b2b 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(255, 193, 7, 0.5);
+}
+
+.mini-ring span {
+  font-size: 14px;
+  font-weight: 900;
+  color: #111;
+  background: #ffc107;
+  padding: 6px 10px;
+  border-radius: 10px;
+}
+
+.dashboard-wrapper {
+  padding: 40px;
+  background: #ffc107;
+  min-height: 100vh;
+}
+
+.overall-card {
+  background: linear-gradient(135deg, #111, #000);
+  color: white;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+  margin-bottom: 40px;
+}
+
+.heatmap-grid {
+  display: grid;
+  grid-template-columns: repeat(52, 1fr);
+  gap: 4px;
+  margin-top: 20px;
+}
+
+.heat-cell {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+/* ===== DASHBOARD HEADER ===== */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.dashboard-title {
+  font-size: 36px;
+  font-weight: 900;
+  color: #111;
+}
+
+/* SIMPLE DROPDOWN */
+.month-select {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* ===== OVERALL CARD FLEX ===== */
+.overall-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ===== PROGRESS RING ===== */
+.progress-ring {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: conic-gradient(#ffc107 var(--progress), #2b2b2b 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px rgba(255, 193, 7, 0.4);
+}
+
+.progress-inner {
+  width: 105px;
+  height: 105px;
+  border-radius: 50%;
+  background: #111;
+  color: #ffc107;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+}
+
+.progress-inner span {
+  font-size: 30px;
+  line-height: 1;
+}
+
+.progress-inner small {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* ===== ACTIVITY CARD FLEX ===== */
+.activity-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Smaller ring for activity cards */
+.small-ring {
+  width: 80px;
+  height: 80px;
+}
+
+.small-inner {
+  width: 60px;
+  height: 60px;
+}
+
+.small-inner span {
+  font-size: 16px;
+}
+
+/* SECTION TITLE */
+.section-title {
+  font-size: 28px;
+  font-weight: 900;
+  margin-bottom: 20px;
+  color: #111;
+}
+
+/* ===== CALENDAR HEATMAP OVERRIDES ===== */
+
+.react-calendar-heatmap {
+  font-size: 12px;
+}
+
+.react-calendar-heatmap .color-empty {
+  fill: #ebedf0;
+}
+
+.react-calendar-heatmap .color-scale-1 {
+  fill: #c6e48b;
+}
+
+.react-calendar-heatmap .color-scale-2 {
+  fill: #7bc96f;
+}
+
+.react-calendar-heatmap .color-scale-3 {
+  fill: #239a3b;
+}
+
+/* Wrap it nicely */
+.heatmap-wrapper {
+  background: #fff;
+  padding: 24px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  overflow-x: auto;
+}
+
+/* ===== HEATMAP COLORS ===== */
+
+.react-calendar-heatmap .color-empty {
+  fill: #ebedf0;
+}
+
+.react-calendar-heatmap .color-scale-1 {
+  fill: #c6e48b;
+}
+
+.react-calendar-heatmap .color-scale-2 {
+  fill: #7bc96f;
+}
+
+.react-calendar-heatmap .color-scale-3 {
+  fill: #239a3b;
+}
+
+/* Rounded blocks */
+.react-calendar-heatmap rect {
+  rx: 3;
+}
+/* Reduce space before heatmap */
+.heatmap-box {
+  margin-top: 30px; /* earlier it was ~60px */
+}
+
+/* Wrapper */
+.heatmap-wrapper {
+  margin-top: 16px;
+}
+
+/* Year dropdown */
+.year-select {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+}
+
+/* ===== HEATMAP COLORS ===== */
+
+.react-calendar-heatmap .color-empty {
+  fill: #ebedf0;
+}
+
+.react-calendar-heatmap .color-scale-1 {
+  fill: #c6e48b;
+}
+
+.react-calendar-heatmap .color-scale-2 {
+  fill: #7bc96f;
+}
+
+.react-calendar-heatmap .color-scale-3 {
+  fill: #239a3b;
+}
+
+.react-calendar-heatmap rect {
+  rx: 3;
+}
+
+/* ===== LEGEND ===== */
+
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  font-size: 12px;
+  color: #444;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.legend-box {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+.legend-box.color-empty {
+  background: #ebedf0;
+}
+.legend-box.color-scale-1 {
+  background: #c6e48b;
+}
+.legend-box.color-scale-2 {
+  background: #7bc96f;
+}
+.legend-box.color-scale-3 {
+  background: #239a3b;
+}
+
+/* Dropdown polish */
+.month-select,
+.year-select {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+}
+
+/* ===== TOP NAVIGATION ===== */
+/* ===== CLEAN NAVBAR ===== */
+
+/* ===== CLEAN & FIXED NAVBAR ===== */
+
+.clean-nav {
+  position: fixed; /* 🔥 always visible */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px 40px; /* slightly more breathing space */
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+/* Push content below fixed navbar */
+body {
+  padding-top: 70px;
+}
+
+/* Brand */
+.nav-brand {
+  font-size: 30px;
+  font-weight: 700;
+  color: #111;
+}
+
+/* Links container */
+.nav-links {
+  display: flex;
+  gap: 28px;
+
+  /* 🔥 move links slightly left from extreme edge */
+  margin-right: 200px;
+}
+
+/* Individual link */
+.nav-item {
+  text-decoration: none;
+  font-size: 17px; /* 🔥 bigger text */
+  font-weight: 600; /* 🔥 clearer */
+  color: #555;
+
+  padding-bottom: 6px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+  color: #000;
+}
+
+/* Active underline */
+.nav-item.active {
+  color: #000;
+  border-bottom: 2px solid #ffc107;
+}
+
+@media (max-width: 768px) {
+  .overall-flex {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .task-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .task-card {
+    padding: 14px;
+  }
+
+  .progress-ring {
+    margin-left: 0;
+  }
+}
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 14px;
+  }
+
+  .nav-link {
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+}
+.heatmap-box {
+  overflow-x: auto;
+}
+
+.react-calendar-heatmap {
+  min-width: 700px;
+}

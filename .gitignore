@@ -1,0 +1,15 @@
+# dependencies
+node_modules
+client/node_modules
+server/node_modules
+
+# environment files
+.env
+client/.env
+server/.env
+
+# build output
+client/dist
+
+
+#this is file with .gitignore extension which is used to ignore certain files and directories to upload in a Git repository.
