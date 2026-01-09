@@ -1,53 +1,55 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const path = require("path");
 require("dotenv").config();
 
 const app = express();
 
-// Middlewares
+/* =======================
+   MIDDLEWARES
+======================= */
 app.use(cors());
 app.use(express.json());
 
-const path = require("path");
-
-// Serve static frontend (simple fallback UI)
-app.use(express.static(path.join(__dirname, "public")));
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
-
-// MongoDB connection
+/* =======================
+   MONGODB
+======================= */
 mongoose
   .connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log("MongoDB Connected");
-  })
-  .catch((err) => console.log(err));
+  .then(() => console.log("MongoDB Connected"))
+  .catch((err) => console.error(err));
 
-// Routes
-const activityRoutes = require("./routes/activityRoutes");
-const scheduleRoutes = require("./routes/scheduleRoutes");
-const todayRoutes = require("./routes/todayRoutes");
+/* =======================
+   API ROUTES
+======================= */
+app.use("/activities", require("./routes/activityRoutes"));
+app.use("/schedules", require("./routes/scheduleRoutes"));
+app.use("/today", require("./routes/todayRoutes"));
+app.use("/logs", require("./routes/logRoutes"));
+app.use("/dashboard", require("./routes/dashboardRoutes"));
+app.use("/heatmap", require("./routes/heatmapRoutes"));
 
-app.use("/activities", activityRoutes);
-app.use("/schedules", scheduleRoutes);
-app.use("/today", todayRoutes);
+/* =======================
+   SERVE FRONTEND
+======================= */
 
-// Log routes
-const logRoutes = require("./routes/logRoutes");
-app.use("/logs", logRoutes);
+// ONLY in production (Render)
+if (process.env.NODE_ENV === "production") {
+  const clientBuildPath = path.join(__dirname, "../client/build");
 
-// Dashboard routes
-const dashboardRoutes = require("./routes/dashboardRoutes");
-app.use("/dashboard", dashboardRoutes);
+  app.use(express.static(clientBuildPath));
 
-// Heatmap routes
-const heatmapRoutes = require("./routes/heatmapRoutes");
-app.use("/heatmap", heatmapRoutes);
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(clientBuildPath, "index.html"));
+  });
+}
 
-// Start server
+/* =======================
+   SERVER START
+======================= */
 const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
